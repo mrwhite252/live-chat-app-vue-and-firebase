@@ -11,5 +11,6 @@ export default {};
 <style>
 .welcome {
   text-align: center;
+  padding: 1.5em 0;
 }
 </style>
