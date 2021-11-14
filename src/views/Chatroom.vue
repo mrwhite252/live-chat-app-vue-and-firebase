@@ -5,9 +5,24 @@
 </template>
 
 <script>
+import { watch } from "@vue/runtime-core";
 import Navbar from "../components/Navbar.vue";
+import getUser from "../composables/getUser";
+import { useRouter } from "vue-router";
 export default {
   components: { Navbar },
+
+  setup() {
+    // get the current user using the getUser composable
+    const { user } = getUser();
+    const router = useRouter();
+    // watch the current user for changes
+    watch(user, () => {
+      if (!user.value) {
+        router.push({ name: "Welcome" });
+      }
+    });
+  },
 };
 </script>
 

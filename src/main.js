@@ -4,7 +4,7 @@ import router from "./router";
 
 import "./assets/main.css";
 
-import { projectAuth, projectFirestore } from "./firebase/config";
+import { projectAuth } from "./firebase/config";
 
 let app;
 
