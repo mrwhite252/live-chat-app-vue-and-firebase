@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <Navbar />
+    <NewChatForm />
   </div>
 </template>
 
@@ -9,8 +10,9 @@ import { watch } from "@vue/runtime-core";
 import Navbar from "../components/Navbar.vue";
 import getUser from "../composables/getUser";
 import { useRouter } from "vue-router";
+import NewChatForm from "../components/NewChatForm.vue";
 export default {
-  components: { Navbar },
+  components: { Navbar, NewChatForm },
 
   setup() {
     // get the current user using the getUser composable
@@ -18,6 +20,7 @@ export default {
     const router = useRouter();
     // watch the current user for changes
     watch(user, () => {
+      // if the user.value is null, then redirect the user to the welcome view
       if (!user.value) {
         router.push({ name: "Welcome" });
       }
